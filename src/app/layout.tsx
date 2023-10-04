@@ -19,13 +19,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  
   return (
     <html lang="en">
       <body className={inter.className}>
         <ToasterProvider />
         <LoginModal />
         <RegisterModal />
-
         <div className="">{children}</div>
       </body>
     </html>
