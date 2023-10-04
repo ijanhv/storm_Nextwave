@@ -47,9 +47,8 @@ const CreateService = ({ currentUser }: Props) => {
         .catch((error) => {
           console.error("Error creating service:", error);
         });
-    } catch (error) {}
+    } catch (error) { }
   };
-
 
   return (
     <div className="m-5">
@@ -160,11 +159,11 @@ const CreateService = ({ currentUser }: Props) => {
           </div>
         </div>
         <button
-            type="submit"
-            className="dashboard-btn"
-            >
-            Submit
-            </button>
+          type="submit"
+          className="dashboard-btn"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
