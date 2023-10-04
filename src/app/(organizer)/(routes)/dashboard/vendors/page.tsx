@@ -1,5 +1,6 @@
-import VendorCard from "@/components/dashboard/vendors/VendorCard"
 import { BuildingStorefrontIcon, VideoCameraIcon, SparklesIcon, MusicalNoteIcon } from "@heroicons/react/24/outline"
+import VendorCard from "@/components/dashboard/vendors/VendorCard"
+import FilterVendors from "@/components/dashboard/organizerVendors/FilterVendors"
 
 const vendorsList = [
   {
@@ -9,6 +10,7 @@ const vendorsList = [
     contact: '+91 987871221',
     description: 'Providing the best services in the market for the past 10 years.',
     icon: <BuildingStorefrontIcon />,
+    category: 'Venue',
   },
   {
     id: "2",
@@ -16,7 +18,8 @@ const vendorsList = [
     name: 'Andre Johnson',
     contact: '+91 987871221',
     description: 'Preserving your memories then and now.',
-    icon: <VideoCameraIcon />
+    icon: <VideoCameraIcon />,
+    category: 'Photography'
   },
   {
     id: "3",
@@ -24,7 +27,8 @@ const vendorsList = [
     name: 'Eva',
     contact: '+91 987871221',
     description: 'Innovative and creative designs for your events',
-    icon: <SparklesIcon />
+    icon: <SparklesIcon />,
+    category: 'Decoration'
   },
   {
     id: "4",
@@ -32,7 +36,8 @@ const vendorsList = [
     name: 'Quentin Tarantino',
     contact: '+91 987871221',
     description: 'Chime in the best music for your events',
-    icon: <MusicalNoteIcon />
+    icon: <MusicalNoteIcon />,
+    category: 'Music'
   },
 ]
 
@@ -41,7 +46,9 @@ const VendorsPage = () => {
     <div className='m-5'>
       <h2 className='heading'>Vendors</h2>
 
-      <div className='border flex flex-col justify-end border-gray-300 px-6 py-2 my-3 rounded-lg'>
+      <div className='border flex flex-col justify-end border-gray-300 px-6 py-2 my-5 rounded-lg'>
+
+        <FilterVendors />
 
         <div className='grid grid-cols-3 gap-x-9 gap-y-7 my-7 h-[450px] overflow-x-hidden overflow-y-scroll'>
           {vendorsList.map((vendor, index) => (

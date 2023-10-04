@@ -1,4 +1,5 @@
 import getServices from "@/actions/getServices";
+import FilterVendors from "@/components/dashboard/organizerVendors/FilterVendors";
 import { Vendor } from "@prisma/client";
 
 const VendorHomePage = async () => {
@@ -20,8 +21,7 @@ const VendorHomePage = async () => {
       <div className="grid grid-cols-3 gap-x-9 gap-y-7 my-7 h-[450px] overflow-x-hidden overflow-y-scroll">
         {services.map((service: any) => {
           return (
-            <div>
-              HIII
+            <div key={service.name}>
               <h1 className="text-2xl text-black">{service?.name}</h1>
             </div>
           );
