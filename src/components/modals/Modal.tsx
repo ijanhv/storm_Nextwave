@@ -52,7 +52,7 @@ const Modal: React.FC<ModalProps> = ({
     }
 
     onSubmit();
-  }, [disabled, onSubmit ]);
+  }, [disabled, onSubmit]);
 
   const handleSecondaryAction = useCallback(() => {
     if (disabled || !secondaryAction) {
@@ -60,7 +60,7 @@ const Modal: React.FC<ModalProps> = ({
     }
 
     secondaryAction();
-  }, [disabled,secondaryAction]);
+  }, [disabled, secondaryAction]);
 
   if (!isOpen) {
     return null;
@@ -152,7 +152,7 @@ const Modal: React.FC<ModalProps> = ({
                 </button>
                 <div className="text-lg font-semibold">{title}</div>
               </div>
-              
+
               <div className="relative p-6 flex-auto">{body}</div>
               {/*footer*/}
               <div className="flex flex-col gap-2 p-6">
