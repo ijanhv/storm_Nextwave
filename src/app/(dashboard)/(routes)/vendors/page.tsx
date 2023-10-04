@@ -3,6 +3,7 @@ import { BuildingStorefrontIcon, VideoCameraIcon, SparklesIcon, MusicalNoteIcon 
 
 const vendorsList = [
   {
+    id: "1",
     companyName: 'Smith and sons Pvt Ltd',
     name: 'Smith Dsouza',
     contact: '+91 987871221',
@@ -10,6 +11,7 @@ const vendorsList = [
     icon: <BuildingStorefrontIcon />,
   },
   {
+    id: "2",
     companyName: 'Andre Photography',
     name: 'Andre Johnson',
     contact: '+91 987871221',
@@ -17,6 +19,7 @@ const vendorsList = [
     icon: <VideoCameraIcon />
   },
   {
+    id: "3",
     companyName: 'Decors and more',
     name: 'Eva',
     contact: '+91 987871221',
@@ -24,6 +27,7 @@ const vendorsList = [
     icon: <SparklesIcon />
   },
   {
+    id: "4",
     companyName: 'Melody Music',
     name: 'Quentin Tarantino',
     contact: '+91 987871221',
@@ -44,6 +48,7 @@ const VendorsPage = () => {
             <VendorCard
               index={index}
               key={index}
+              id={vendor.id}
               name={vendor.name}
               companyName={vendor.companyName}
               contact={vendor.contact}

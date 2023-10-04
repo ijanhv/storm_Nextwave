@@ -8,7 +8,7 @@
 
 @layer components {
     .heading {
-        @apply text-xl font-bold;
+        @apply text-xl font-bold text-orange-600;
     }
     .dashboard-btn {
         @apply px-3 py-1 rounded-md bg-[#191825] hover:bg-gray-900 text-gray-200 w-32;
