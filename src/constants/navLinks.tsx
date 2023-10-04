@@ -16,7 +16,7 @@ export const organizerNavLinks = [
     },
     {
         name: "Create Event",
-        path: "/dashboard/create",
+        path: "/create",
         icon: <SquaresPlusIcon />,
     },
     {

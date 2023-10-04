@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "../Container";
 
 import { Role, User } from "@prisma/client";
@@ -18,12 +18,19 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import userUserStore from "@/hooks/useUserStore";
 
 interface NavbarProps {
   currentUser?: User;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
+  const [user, setUser] = userUserStore((state) => [state.user, state.setUser]);
+
+  useEffect(() => {
+    setUser(currentUser);
+  }, [currentUser])
+
   const router = useRouter();
 
   const handleVendorRole = () => {
@@ -40,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
         .catch((error) => {
           console.error("Error updating user:", error);
         });
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleOrgainzerRole = () => {
     try {
@@ -56,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
         .catch((error) => {
           console.error("Error updating user:", error);
         });
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (
@@ -92,8 +99,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
               )}
 
               {currentUser &&
-                currentUser?.role !== "Vendor" &&
-                currentUser?.role !== "Organizer" && (
+                currentUser?.role === "Attendee" && (
                   <Dialog>
                     <DialogTrigger asChild>
                       <Button variant="outline" className="rounded-2xl">

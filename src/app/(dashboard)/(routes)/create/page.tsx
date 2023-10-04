@@ -1,9 +1,11 @@
 'use client'
 import { getCurrentUser } from '@/actions/getCurrentUser'
+import CreateEventForm from '@/components/dashboard/create/CreateEventForm'
 import FormStepOne from '@/components/dashboard/create/FormStepOne'
 import FormStepThree from '@/components/dashboard/create/FormStepThree'
 import FormStepTwo from '@/components/dashboard/create/FormStepTwo'
-import { useState } from 'react'
+import userUserStore from '@/hooks/useUserStore'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 type FormData = {
@@ -29,68 +31,19 @@ type FormData = {
   sponsorDescription: string
 }
 
-const CreateEvent =  () => {
+const CreateEvent = () => {
 
-  const [formStep, setFormStep] = useState<number>(1)
-  const { register, setValue, handleSubmit, formState: { errors }, } = useForm<FormData>()
+  const user = userUserStore((state) => state.user)
 
-  const onSubmit = handleSubmit((data) => console.log(data))
+  if (user.role !== 'Organizer') {
+    return <div>Not Authorized</div>
+  }
 
   return (
     <div className=''>
       <h2 className='heading m-4'>Create Event</h2>
 
-      <form
-        className='border flex flex-col justify-end border-gray-300 px-8 py-12 m-4 rounded-lg '
-        onSubmit={onSubmit}
-      >
-        {formStep === 1 &&
-          <FormStepOne
-            heading='Event Details'
-            description='Enter the details of your event and click next to continue.'
-            register={register}
-          />}
-        {formStep === 2 &&
-          <FormStepTwo
-            heading='Speakers & Sponsors'
-            description='Enter the details of the speakers and sponsors for your event'
-            register={register}
-          />}
-        {formStep === 3 &&
-          <FormStepThree
-            heading='Tickets'
-            description='Enter the details of the tickets for your event!'
-            register={register}
-          />}
-
-        <div className='flex justify-between'>
-          {formStep > 1 && (
-            <button
-              className='dashboard-btn'
-              onClick={() => setFormStep(formStep - 1)}
-            >
-              Back
-            </button>
-          )}
-          {formStep < 3 && (
-            <button
-              className='dashboard-btn  absolute right-32'
-              onClick={() => setFormStep(formStep + 1)}
-            >
-              Next
-            </button>
-          )}
-          {formStep === 3 && (
-            <button
-              className='dashboard-btn'
-              type='submit'
-            >
-              Submit
-            </button>
-          )}
-        </div>
-      </form>
-
+      <CreateEventForm />
     </div>
   )
 }

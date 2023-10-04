@@ -11,7 +11,6 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
       updatedAt: new Date(currentUserData.updatedAt),
     }
     : undefined;
-  console.log(currentUser);
 
   return (
     <div className='flex flex-row'>
