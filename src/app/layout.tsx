@@ -21,7 +21,7 @@ export default async function RootLayout({
 }) {
 
   const currentUserData = await getCurrentUser();
-  const currentUser: User | undefined = currentUserData
+  const currentUser: User = currentUserData
     ? {
       ...currentUserData,
       createdAt: new Date(currentUserData.createdAt),
@@ -36,8 +36,8 @@ export default async function RootLayout({
         <ToasterProvider />
         <LoginModal />
         <RegisterModal />
-        <Navbar currentUser={currentUser} />
-        <div className="pb-20 pt-28">{children}</div>
+        {/* <Navbar currentUser={currentUser} /> */}
+        <div className="">{children}</div>
       </body>
     </html>
   );
