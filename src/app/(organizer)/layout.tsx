@@ -15,7 +15,7 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <div className='flex flex-row'>
       <section>
-        <Sidebar />
+        <Sidebar currentUser={currentUser} />
       </section>
 
       <main className='flex flex-col w-full'>

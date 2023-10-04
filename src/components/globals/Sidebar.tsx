@@ -3,16 +3,22 @@
 import { usePathname } from 'next/navigation'
 import { Kanit } from 'next/font/google'
 import { organizerNavLinks } from '../../constants/navLinks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // default imports
 import Link from 'next/link'
+import userUserStore from '@/hooks/useUserStore'
 
 const pacifico = Kanit({ weight: '400', subsets: ['latin'] })
 
-const Sidebar = () => {
+const Sidebar = ({ currentUser }: User) => {
   const pathname = usePathname()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [user, setUser] = userUserStore((state) => [state.user, state.setUser]);
+
+  useEffect(() => {
+    setUser(currentUser);
+  }, []);
 
   const handleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed)
