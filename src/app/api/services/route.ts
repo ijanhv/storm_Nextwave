@@ -1,5 +1,6 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import prisma from "@/lib/prismadb";
+import { BookingStatus } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -10,6 +11,7 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json();
+  console.log(body);
   const {
     name,
     contactPerson,
@@ -46,13 +48,19 @@ export async function POST(request: Request) {
       location,
       description,
       pricing,
-      rating,
-      bookingStatus,
+      rating : 0,
+      bookingStatus: BookingStatus.Available,
       specialRequirements,
     },
   });
 
-  
-
   return NextResponse.json(newService);
+}
+
+
+// GET ALL SERVICES
+
+export async function GET() {
+  const services = await prisma.vendor.findMany();
+  return NextResponse.json(services);
 }

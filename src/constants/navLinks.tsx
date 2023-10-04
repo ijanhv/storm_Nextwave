@@ -31,20 +31,20 @@ export const organizerNavLinks = [
     },
 ];
 
-export const policeNavLinks = [
+export const vendorNavLinks = [
     {
         name: "Home",
-        path: "/",
+        path: "/vendor/home",
         icon: <Squares2X2Icon />,
     },
     {
-        name: "FIR Listing",
-        path: "/police/listing",
+        name: "Create Service",
+        path: "/vendor/create",
         icon: <ClipboardDocumentCheckIcon />,
     },
     {
         name: "Profile",
-        path: "/police/profile",
+        path: "/vendor/profile",
         icon: <UserIcon />,
     },
 ];

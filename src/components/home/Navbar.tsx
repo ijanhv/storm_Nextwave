@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
 
   useEffect(() => {
     setUser(currentUser);
-  }, [currentUser])
+  }, []);
 
   const router = useRouter();
 
@@ -42,12 +42,12 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
         .then((response) => {
           console.log("User updated successfully:", response.data);
           toast.success("Role Updated Successfully");
-          router.push("/vendors");
+          router.push("/vendor/create");
         })
         .catch((error) => {
           console.error("Error updating user:", error);
         });
-    } catch (error) { }
+    } catch (error) {}
   };
   const handleOrgainzerRole = () => {
     try {
@@ -63,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
         .catch((error) => {
           console.error("Error updating user:", error);
         });
-    } catch (error) { }
+    } catch (error) {}
   };
 
   return (
@@ -79,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
               {currentUser && currentUser?.role === "Vendor" && (
                 <div className="flex items-center">
                   <Link
-                    href="/vendors"
+                    href="/vendor/create"
                     className="text-sm text-[#00252e] flex gap-2 hover:underline"
                   >
                     Go To Dashboard
@@ -98,39 +98,38 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
                 </div>
               )}
 
-              {currentUser &&
-                currentUser?.role === "Attendee" && (
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline" className="rounded-2xl">
-                        Continue As
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[400px] space-y-3">
-                      <DialogHeader className="items-center">
-                        <DialogTitle className="text-md text-center ">
-                          {" "}
-                          Are you a Vendor or a an Event Planner?
-                        </DialogTitle>
-                      </DialogHeader>
+              {currentUser && currentUser?.role === "Attendee" && (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" className="rounded-2xl">
+                      Continue As
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[400px] space-y-3">
+                    <DialogHeader className="items-center">
+                      <DialogTitle className="text-md text-center ">
+                        {" "}
+                        Are you a Vendor or a an Event Planner?
+                      </DialogTitle>
+                    </DialogHeader>
 
-                      <div className="mx-auto flex flex-col gap-4">
-                        <div
-                          onClick={handleOrgainzerRole}
-                          className="font-bold text-center text-transparent text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 hover:scale-110 cursor-pointer"
-                        >
-                          Event Planner
-                        </div>
-                        <div
-                          onClick={handleVendorRole}
-                          className="font-bold text-center text-transparent text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 hover:scale-110 cursor-pointer"
-                        >
-                          Vendor
-                        </div>
+                    <div className="mx-auto flex flex-col gap-4">
+                      <div
+                        onClick={handleOrgainzerRole}
+                        className="font-bold text-center text-transparent text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 hover:scale-110 cursor-pointer"
+                      >
+                        Event Planner
                       </div>
-                    </DialogContent>
-                  </Dialog>
-                )}
+                      <div
+                        onClick={handleVendorRole}
+                        className="font-bold text-center text-transparent text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 hover:scale-110 cursor-pointer"
+                      >
+                        Vendor
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              )}
               <UserMenu currentUser={currentUser} />
             </div>
           </div>
