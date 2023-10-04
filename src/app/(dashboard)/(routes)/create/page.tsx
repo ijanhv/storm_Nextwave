@@ -29,12 +29,8 @@ type FormData = {
   sponsorDescription: string
 }
 
-const CreateEvent = async () => {
-  const currentUser = await getCurrentUser();
+const CreateEvent =  () => {
 
-  if (currentUser?.role !== "Organizer") {
-    return <h1>Not Authorized</h1>;
-  }
   const [formStep, setFormStep] = useState<number>(1)
   const { register, setValue, handleSubmit, formState: { errors }, } = useForm<FormData>()
 

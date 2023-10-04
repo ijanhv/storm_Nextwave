@@ -105,10 +105,13 @@ model Vendor {
   description         String?
   pricing             String?
   rating              Float
+  userId              String        @db.ObjectId
   bookingStatus       BookingStatus
   specialRequirements String?
   eventId             String?       @db.ObjectId
   event               Event?        @relation(fields: [eventId], references: [id])
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
 }
 
 enum BookingStatus {
