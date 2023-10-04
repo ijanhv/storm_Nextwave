@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+@layer components {
+    .heading {
+        @apply text-xl font-bold;
+    }
+    .dashboard-btn {
+        @apply px-3 py-1 rounded-md bg-[#191825] hover:bg-gray-900 text-gray-200 w-32;
+    }
+    .form-input {
+        @apply px-3 py-2 text-sm border border-gray-300 shadow-sm w-full rounded-md focus:outline-none;
+    }
+    .form-label {
+        @apply text-sm text-gray-800 font-semibold;
+    }
+}

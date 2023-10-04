@@ -1,0 +1,22 @@
+type CreateEventFormValues = {
+    name: string;
+    eventType: string;
+    startDate: string;
+    endDate: string;
+    eventCategory: string;
+    location: string;
+    description: string;
+    ticketName: string;
+    ticketPrice: string;
+    ticketsQuantity: string;
+    speakerName: string;
+    speakerEmail: string;
+    speakerContact: string;
+    speakerRemark: string;
+    sponsorName: string;
+    sponsorCompanyName: string;
+    sponsorCompanyEmail: string;
+    sponsorAmount: string;
+    sponsorRemark: string;
+    sponsorDescription: string;
+};
