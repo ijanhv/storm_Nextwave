@@ -36,31 +36,28 @@ const LoginModal = () => {
     signIn("credentials", {
       ...data,
       redirect: false,
-
     }).then((callback) => {
       setIsLoading(false);
       if (callback?.ok) {
         toast.success("Logged in successfully");
         router.refresh();
+
         loginModal.onClose();
       }
       if (callback?.error) {
         toast.error(callback.error);
       }
-    })
+    });
   };
 
   const toggle = useCallback(() => {
-    loginModal.onClose()
-    registerModal.onOpen()
-  }, [loginModal, registerModal])
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading
-        title="Welcome Back!"
-        subtitle="Login to your account"
-      />
+      <Heading title="Welcome Back!" subtitle="Login to your account" />
 
       <Input
         id="email"
@@ -92,7 +89,6 @@ const LoginModal = () => {
         icon={FcGoogle}
         onClick={() => signIn("google")}
       />
-
 
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
