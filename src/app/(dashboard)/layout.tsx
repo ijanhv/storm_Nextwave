@@ -1,6 +1,5 @@
 import { getCurrentUser } from '@/actions/getCurrentUser';
 import Sidebar from '@/components/globals/Sidebar'
-import Navbar from '@/components/navbar/Navbar'
 import UserMenu from '@/components/navbar/UserMenu'
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {

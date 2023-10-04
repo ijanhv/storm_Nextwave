@@ -35,8 +35,8 @@ const CreateEvent = () => {
   const onSubmit = handleSubmit((data) => console.log(data))
 
   return (
-    <div className='m-5'>
-      <h2 className='heading'>Create Event</h2>
+    <div className=''>
+      <h2 className='heading m-4'>Create Event</h2>
 
       <form
         className='border flex flex-col justify-end border-gray-300 px-8 py-12 m-4 rounded-lg'
