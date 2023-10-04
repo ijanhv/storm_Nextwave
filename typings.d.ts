@@ -20,3 +20,13 @@ type CreateEventFormValues = {
     sponsorRemark: string;
     sponsorDescription: string;
 };
+
+type User = {
+    id: string;
+    name: string;
+    email: string;
+    image?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    emailVerified?: DateTime;
+};

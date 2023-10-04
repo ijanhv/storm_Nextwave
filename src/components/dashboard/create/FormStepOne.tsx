@@ -47,7 +47,7 @@ const FormStepOne = ({ register, heading, description }: Props) => {
 
         <div className='flex flex-col col-span-2 space-y-2 w-full'>
           <label className='form-label' htmlFor="">Description</label>
-          <textarea {...register('description')} rows={4} className='form-input' placeholder="Event Type"></textarea>
+          <textarea {...register('description')} rows={3} className='form-input' placeholder="Event Type"></textarea>
         </div>
 
       </div>
