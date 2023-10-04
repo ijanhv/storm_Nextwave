@@ -16,17 +16,17 @@ export const organizerNavLinks = [
     },
     {
         name: "Create Event",
-        path: "/create",
+        path: "/dashboard/create",
         icon: <SquaresPlusIcon />,
     },
     {
         name: "Vendors",
-        path: "/vendors",
+        path: "/dashboard/vendors",
         icon: <UserGroupIcon />,
     },
     {
         name: "Profile",
-        path: "/admin/profile",
+        path: "/dashboard/profile",
         icon: <UserIcon />,
     },
 ];
