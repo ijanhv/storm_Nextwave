@@ -1,4 +1,5 @@
 'use client'
+import { getCurrentUser } from '@/actions/getCurrentUser'
 import FormStepOne from '@/components/dashboard/create/FormStepOne'
 import FormStepThree from '@/components/dashboard/create/FormStepThree'
 import FormStepTwo from '@/components/dashboard/create/FormStepTwo'
@@ -28,7 +29,12 @@ type FormData = {
   sponsorDescription: string
 }
 
-const CreateEvent = () => {
+const CreateEvent = async () => {
+  const currentUser = await getCurrentUser();
+
+  if (currentUser?.role !== "Organizer") {
+    return <h1>Not Authorized</h1>;
+  }
   const [formStep, setFormStep] = useState<number>(1)
   const { register, setValue, handleSubmit, formState: { errors }, } = useForm<FormData>()
 
@@ -39,7 +45,7 @@ const CreateEvent = () => {
       <h2 className='heading'>Create Event</h2>
 
       <form
-        className='border flex flex-col justify-end border-gray-300 px-8 py-12 m-4 rounded-lg'
+        className='border flex flex-col justify-end border-gray-300 px-8 py-12 m-4 rounded-lg '
         onSubmit={onSubmit}
       >
         {formStep === 1 &&
