@@ -1,6 +1,6 @@
 'use client'
 import { BuildingStorefrontIcon, VideoCameraIcon, SparklesIcon, MusicalNoteIcon } from "@heroicons/react/24/outline"
-import VendorCard from "@/components/dashboard/vendors/VendorCard"
+import VendorCard from "@/components/dashboard/organizerVendors/VendorCard"
 import FilterVendors from "@/components/dashboard/organizerVendors/FilterVendors"
 import { useState } from "react"
 

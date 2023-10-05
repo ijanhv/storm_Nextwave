@@ -1,11 +1,9 @@
 'use client'
-import { getCurrentUser } from '@/actions/getCurrentUser'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import FormStepOne from '@/components/dashboard/create/FormStepOne'
 import FormStepThree from '@/components/dashboard/create/FormStepThree'
 import FormStepTwo from '@/components/dashboard/create/FormStepTwo'
-import userUserStore from '@/hooks/useUserStore'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
 
 type FormData = {
   name: string

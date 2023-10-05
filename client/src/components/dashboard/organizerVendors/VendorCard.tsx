@@ -17,7 +17,7 @@ const VendorCard = ({ companyName, index, name, contact, description, icon, id }
 
   return (
     <div
-      onClick={() => router.push(`/vendors/${id}`)}
+      onClick={() => router.push(`/dashboard/vendors/${id}`)}
       className={`h-56 w-[260px] hover:shadow-md flex-flex-col space-y-16 border-[1px] p-4 border-gray-300 text-gray-800 hover:cursor-pointer rounded-md
         ${index % 3 === 0 ? 'hover:border-purple-400' :
           index % 3 === 1 ? 'hover:border-blue-400' : 'hover:border-green-400'

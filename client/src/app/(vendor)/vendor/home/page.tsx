@@ -1,5 +1,6 @@
 import getServices from "@/actions/getServices";
 import FilterVendors from "@/components/dashboard/organizerVendors/FilterVendors";
+import ServiceCard from "@/components/dashboard/vendors/ServiceCard";
 import { Vendor } from "@prisma/client";
 
 const VendorHomePage = async () => {
@@ -18,14 +19,26 @@ const VendorHomePage = async () => {
     <div className="">
       <h2 className="heading m-4">My Services</h2>
 
-      <div className="grid grid-cols-3 gap-x-9 gap-y-7 my-7 h-[450px] overflow-x-hidden overflow-y-scroll">
-        {services.map((service: any) => {
-          return (
-            <div key={service.name}>
-              <h1 className="text-2xl text-black">{service?.name}</h1>
-            </div>
-          );
-        })}
+      <div className='border border-gray-300 px-6 py-2 my-5 rounded-lg'>
+        <div className="grid grid-cols-3 gap-x-9 gap-y-7 my-7 h-[450px] overflow-x-hidden overflow-y-scroll">
+          {services.map((service: any, index) => {
+            return (
+              <div key={service.name}>
+                <ServiceCard
+                  name={service.name}
+                  description={service.description}
+                  category={service.category}
+                  pricing={service.pricing}
+                  contactPerson={service.contactPerson}
+                  email={service.email}
+                  phone={service.phone}
+                  location={service.location}
+                  index={index}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
         .catch((error) => {
           console.error("Error updating user:", error);
         });
-    } catch (error) {}
+    } catch (error) { }
   };
   const handleOrgainzerRole = () => {
     try {
@@ -63,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
         .catch((error) => {
           console.error("Error updating user:", error);
         });
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (
@@ -76,6 +76,14 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
               Eventsy{" "}
             </h1>
             <div className="flex gap-4 items-center">
+              <div className="flex items-center">
+                <Link
+                  href="/events"
+                  className="text-sm heading flex gap-2 underline"
+                >
+                  Book An Event
+                </Link>
+              </div>
               {currentUser && currentUser?.role === "Vendor" && (
                 <div className="flex items-center">
                   <Link
