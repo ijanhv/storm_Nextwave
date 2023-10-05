@@ -51,22 +51,31 @@ model Account {
 }
 
 model Event {
-  id          String      @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  eventType   String
-  startDate   DateTime
-  endDate     DateTime
-  location    String
-  description String?
-  budget      Float?
-  organizerId String?     @db.ObjectId
-  organizer   User?       @relation(fields: [organizerId], references: [id])
-  attendees   UserEvent[]
-  tasks       Task[]
-  vendors     Vendor[]
-  tickets     Ticket[]
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  eventType       String
+  startDate       DateTime
+  endDate         DateTime
+  location        String
+  description     String?
+  budget          Float?
+  organizerId     String?     @db.ObjectId
+  organizer       User?       @relation(fields: [organizerId], references: [id])
+  attendees       UserEvent[]
+  taskId          String?     @db.ObjectId
+  tasks           Task[]
+  vendors         Vendor[]
+  numberOfTickets Int
+  ticketId        String?     @db.ObjectId
+  tickets         Ticket[]
+  status          EventStatus @default(Upcoming)
 }
 
+enum EventStatus {
+  Upcoming
+  Completed
+  Cancelled
+}
 model Ticket {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
   name     String
