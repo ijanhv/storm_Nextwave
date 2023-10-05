@@ -58,7 +58,12 @@ model Event {
   endDate         DateTime
   location        String
   description     String?
+  category        String
+  speakerId       String?     @db.ObjectId
+  speaker         Speaker?    @relation(fields: [speakerId], references: [id])
   budget          Float?
+  sponsorId       String?     @db.ObjectId
+  sponsor         Sponsor?    @relation(fields: [sponsorId], references: [id])
   organizerId     String?     @db.ObjectId
   organizer       User?       @relation(fields: [organizerId], references: [id])
   attendees       UserEvent[]
@@ -71,18 +76,38 @@ model Event {
   status          EventStatus @default(Upcoming)
 }
 
+model Speaker {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String
+  phone     String
+  createdAt DateTime @default(now())
+  Event     Event[]
+}
+
+model Sponsor {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  companyEmail String
+  companyName  String
+  amount       String
+  description  String
+  createdAt    DateTime @default(now())
+
+  Event Event[]
+}
+
 enum EventStatus {
   Upcoming
   Completed
   Cancelled
 }
+
 model Ticket {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  name     String
-  price    Float
-  quantity Int
-  eventId  String @db.ObjectId
-  event    Event  @relation(fields: [eventId], references: [id])
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  price   Float
+  eventId String @db.ObjectId
+  event   Event  @relation(fields: [eventId], references: [id])
 }
 
 model UserEvent {
