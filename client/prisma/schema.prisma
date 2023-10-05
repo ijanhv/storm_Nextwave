@@ -72,7 +72,7 @@ model Event {
   vendors         Vendor[]
   numberOfTickets Int
   ticketId        String?     @db.ObjectId
-  tickets         Ticket[]
+  ticket          Ticket[]
   status          EventStatus @default(Upcoming)
 }
 

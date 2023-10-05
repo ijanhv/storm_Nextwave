@@ -1,5 +1,4 @@
 import prisma from "@/lib/prismadb";
-import { getCurrentUser } from "./getCurrentUser";
 
 export default async function getAllEvents() {
   try {
@@ -9,9 +8,29 @@ export default async function getAllEvents() {
     //   return [];
     // }
 
-    const events = await prisma.event.findMany()
+    const events = await prisma.event.findMany({
+      include: {
+        speaker: true,
+        sponsor:  true,
+        ticket: true,
+      
+      },
+ 
+    });
 
-    return events;
+
+
+    if (events.length === 0 || !events) {
+      return [];
+    }
+
+    const eventsWithISODate = events.map((event) => ({
+      ...event,
+      startDate: event.startDate.toString(),
+      endDate: event.endDate.toString(),
+    }));
+
+    return eventsWithISODate;
   } catch (error: any) {
     throw new Error(error);
   }

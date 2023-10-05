@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
 
-
   if (!currentUser) {
     return NextResponse.error();
   }
@@ -21,13 +20,13 @@ export async function POST(request: Request) {
     location,
     description,
     budget,
-    organizerId,
     numberOfTickets,
     ticketId,
     status,
     speakerName,
     speakerEmail,
     speakerPhone,
+    organizerId,
     sponsorCompanyName,
     sponsorCompanyEmail,
     sponsorAmount,
@@ -57,7 +56,7 @@ export async function POST(request: Request) {
       description,
       budget,
       organizerId,
-      numberOfTickets : 100,
+      numberOfTickets: 100,
       ticketId,
       status: "Upcoming",
       speaker: {
@@ -75,7 +74,7 @@ export async function POST(request: Request) {
           description: sponsorDescription,
         },
       },
-      tickets: {
+      ticket: {
         create: {
           name: ticketName,
           price: parseFloat(ticketPrice),

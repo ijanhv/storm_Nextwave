@@ -17,6 +17,7 @@ type FormData = {
   endDate: string
   eventCategory: string
   location: string
+  organizerId: string
   description: string
   ticketName: string
   ticketPrice: string
@@ -51,7 +52,8 @@ const CreateEventForm = () => {
       axios
         .post(`${apiUrl}/event`, {
           ...data,
-          userId: currentUser?.id,
+          organizerId: currentUser?.id,
+          // userId: currentUser?.id,
         })
         .then((response) => {
           console.log("Event created successfully:", response.data);
@@ -60,6 +62,7 @@ const CreateEventForm = () => {
         })
         .catch((error) => {
           console.error("Error creating service:", error);
+          toast.error("Error Creating Event");
         });
     } catch (error) { }
   };

@@ -5,6 +5,7 @@ type CreateEventFormValues = {
     endDate: string;
     eventCategory: string;
     location: string;
+    organizerId: string;
     description: string;
     ticketName: string;
     ticketPrice: string;
