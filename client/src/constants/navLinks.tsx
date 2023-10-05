@@ -1,3 +1,4 @@
+import { Cog8ToothIcon } from "@heroicons/react/24/outline";
 import {
     ClipboardDocumentCheckIcon,
     UserGroupIcon,
@@ -23,6 +24,11 @@ export const organizerNavLinks = [
         name: "Vendors",
         path: "/dashboard/vendors",
         icon: <UserGroupIcon />,
+    },
+    {
+        name: "IntelliEvents",
+        path: "/dashboard/intellievents",
+        icon: <Cog8ToothIcon />,
     },
     {
         name: "Profile",
