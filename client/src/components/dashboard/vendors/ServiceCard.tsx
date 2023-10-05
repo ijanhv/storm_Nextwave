@@ -1,5 +1,5 @@
 'use client'
-import { ArrowUpRightIcon, BriefcaseIcon } from '@heroicons/react/24/outline'
+import { BriefcaseIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/navigation'
 
 interface Props {

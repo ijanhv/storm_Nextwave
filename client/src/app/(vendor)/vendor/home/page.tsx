@@ -1,7 +1,5 @@
 import getServices from "@/actions/getServices";
-import FilterVendors from "@/components/dashboard/organizerVendors/FilterVendors";
 import ServiceCard from "@/components/dashboard/vendors/ServiceCard";
-import { Vendor } from "@prisma/client";
 
 const VendorHomePage = async () => {
   const services = await getServices();

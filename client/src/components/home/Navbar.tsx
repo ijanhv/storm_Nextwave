@@ -49,6 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
         });
     } catch (error) { }
   };
+
   const handleOrgainzerRole = () => {
     try {
       axios

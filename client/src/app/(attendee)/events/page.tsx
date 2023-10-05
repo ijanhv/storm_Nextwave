@@ -1,7 +1,4 @@
-import getEvents from "@/actions/getEvents";
-import getServices from "@/actions/getServices";
 import EventCard from "@/components/dashboard/attendees/EventCard";
-import { Vendor } from "@prisma/client";
 
 const events = [
   {
