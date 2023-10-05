@@ -1,17 +1,26 @@
 "use client";
 import { AiOutlineMenu } from "react-icons/ai";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { signOut } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
+import userUserStore from "@/hooks/useUserStore";
 
 interface UserMenuProps {
   currentUser?: User | undefined;
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+  const [user, setUser] = userUserStore((state) => [state.user, state.setUser]);
+  
+
+  useEffect(() => {
+    setUser(currentUser);
+  }, []);
+
+
   const registermodal = useRegisterModal();
   const loginModal = useLoginModal();
 
