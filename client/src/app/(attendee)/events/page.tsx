@@ -1,3 +1,4 @@
+import getAllEvents from "@/actions/getAllEvents";
 import EventCard from "@/components/dashboard/attendees/EventCard";
 
 const events = [
@@ -14,6 +15,8 @@ const events = [
 ]
 
 const EventsPage = async () => {
+  const events = await getAllEvents();
+  console.log(events);
 
   if (events.length === 0) {
     return (

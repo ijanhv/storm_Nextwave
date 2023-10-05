@@ -54,8 +54,8 @@ model Event {
   id              String      @id @default(auto()) @map("_id") @db.ObjectId
   name            String
   eventType       String
-  startDate       DateTime
-  endDate         DateTime
+  startDate       String
+  endDate         String
   location        String
   description     String?
   category        String
@@ -103,11 +103,12 @@ enum EventStatus {
 }
 
 model Ticket {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  name    String
-  price   Float
-  eventId String @db.ObjectId
-  event   Event  @relation(fields: [eventId], references: [id])
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  price       Float
+  organizerId String @db.ObjectId
+  eventId     String @db.ObjectId
+  event       Event  @relation(fields: [eventId], references: [id])
 }
 
 model UserEvent {

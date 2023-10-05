@@ -1,4 +1,5 @@
 import { getCurrentUser } from "@/actions/getCurrentUser"
+import getEvents from "@/actions/getEvents"
 import BudgetTracking from "@/components/dashboard/home/BudgetTracking"
 import CategoryDistribution from "@/components/dashboard/home/CategoryDistribution"
 
@@ -55,6 +56,7 @@ const events = [
 
 const DashboardPage = async () => {
   const currentUser = await getCurrentUser()
+  const event = await getEvents()
 
   if (currentUser?.role !== "Organizer") {
     return <h1>Not Authorized</h1>

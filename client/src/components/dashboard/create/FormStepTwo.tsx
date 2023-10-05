@@ -31,7 +31,7 @@ const FormStepThree = ({ register, heading, description }: Props) => {
 
             <div className='flex flex-col space-y-2 w-full'>
               <label className='form-label' htmlFor="">Contact</label>
-              <input {...register('speakerContact')} type="text" className='form-input' placeholder="Event Name" />
+              <input {...register('speakerPhone')} type="text" className='form-input' placeholder="Event Name" />
             </div>
 
             <div className='flex flex-col space-y-2 w-full'>

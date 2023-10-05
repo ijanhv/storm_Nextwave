@@ -4,6 +4,11 @@ import { useForm } from 'react-hook-form'
 import FormStepOne from '@/components/dashboard/create/FormStepOne'
 import FormStepThree from '@/components/dashboard/create/FormStepThree'
 import FormStepTwo from '@/components/dashboard/create/FormStepTwo'
+import userUserStore from '@/hooks/useUserStore'
+import { apiUrl } from '@/lib/url'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 type FormData = {
   name: string
@@ -18,7 +23,7 @@ type FormData = {
   ticketsQuantity: string
   speakerName: string
   speakerEmail: string
-  speakerContact: string
+  speakerPhone: string
   speakerRemark: string
   sponsorName: string
   sponsorCompanyName: string
@@ -30,37 +35,66 @@ type FormData = {
 const CreateEventForm = () => {
 
   const [formStep, setFormStep] = useState<number>(1)
-  const { register, setValue, handleSubmit, formState: { errors }, } = useForm<FormData>()
+  const router = useRouter();
+  const currentUser = userUserStore((state) => state.user);
 
-  const onSubmit = handleSubmit((data) => console.log(data))
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+
+  const onSubmit = async (data: FormData) => {
+    console.log(data);
+    try {
+      axios
+        .post(`${apiUrl}/event`, {
+          ...data,
+          userId: currentUser?.id,
+        })
+        .then((response) => {
+          console.log("Event created successfully:", response.data);
+          toast.success("Event Created Successfully");
+          router.refresh()
+        })
+        .catch((error) => {
+          console.error("Error creating service:", error);
+        });
+    } catch (error) { }
+  };
 
   return (
     <form
       className='border flex flex-col justify-end border-gray-300 px-8 py-12 m-4 rounded-lg '
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit(onSubmit)}
     >
       {formStep === 1 &&
         <FormStepOne
           heading='Event Details'
           description='Enter the details of your event and click next to continue.'
           register={register}
+  
         />}
       {formStep === 2 &&
         <FormStepTwo
           heading='Speakers & Sponsors'
           description='Enter the details of the speakers and sponsors for your event'
           register={register}
+       
         />}
       {formStep === 3 &&
         <FormStepThree
           heading='Tickets'
           description='Enter the details of the tickets for your event!'
           register={register}
+
         />}
 
       <div className='flex justify-between'>
         {formStep > 1 && (
           <button
+            type='button'
             className='dashboard-btn'
             onClick={() => setFormStep(formStep - 1)}
           >
@@ -69,6 +103,7 @@ const CreateEventForm = () => {
         )}
         {formStep < 3 && (
           <button
+            type='button'
             className='dashboard-btn  absolute right-32'
             onClick={() => setFormStep(formStep + 1)}
           >

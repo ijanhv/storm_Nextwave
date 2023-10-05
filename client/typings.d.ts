@@ -11,7 +11,7 @@ type CreateEventFormValues = {
     ticketsQuantity: string;
     speakerName: string;
     speakerEmail: string;
-    speakerContact: string;
+    speakerPhone: string;
     speakerRemark: string;
     sponsorName: string;
     sponsorCompanyName: string;
