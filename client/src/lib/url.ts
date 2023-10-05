@@ -1,1 +1,1 @@
-export const apiUrl="http://localhost:3000/api"
+export const apiUrl="https://storm-nextwave-cewoelmeo-ijanhv.vercel.app/api "
