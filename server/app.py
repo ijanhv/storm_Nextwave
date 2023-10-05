@@ -47,13 +47,13 @@ async def predict_budget(input_data: InputData):
 
         # Return the predicted budget allocations as a dictionary
         return {
-            "Venue (in Rupees)": float(predicted_budgets[0][0]),
-            "Food (in Rupees)": float(predicted_budgets[0][1]),
-            "Entertainment (in Rupees)": float(predicted_budgets[0][2]),
-            "Decorations (in Rupees)": float(predicted_budgets[0][3]),
-            "Transportation (in Rupees)": float(predicted_budgets[0][4]),
-            "Staffing (in Rupees)": float(predicted_budgets[0][5]),
-            "Miscellaneous (in Rupees)": float(predicted_budgets[0][6])
+            "venue": float(predicted_budgets[0][0]),
+            "food": float(predicted_budgets[0][1]),
+            "entertainment": float(predicted_budgets[0][2]),
+            "decorations": float(predicted_budgets[0][3]),
+            "transportation": float(predicted_budgets[0][4]),
+            "staffing": float(predicted_budgets[0][5]),
+            "miscellaneous": float(predicted_budgets[0][6])
         }
 
     except Exception as e:

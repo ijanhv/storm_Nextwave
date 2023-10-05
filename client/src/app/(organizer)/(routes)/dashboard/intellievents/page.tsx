@@ -61,8 +61,18 @@ const IntelliEvents = () => {
     Number_of_People_Category: number
   }
 
+  type Predictions = {
+    decorations: number
+    food: number
+    entertainment: number
+    miscellanous: number
+    venue: number
+    transportation: number
+    staffing: number
+  }
+
   const { register, setValue, handleSubmit, formState: { errors } } = useForm<FormData>()
-  const [getPrediction, setGetPrediction] = useState({})
+  const [getPrediction, setGetPrediction] = useState<Predictions>()
 
   const onSubmit = handleSubmit(async (data) => {
     console.log(data)
@@ -74,6 +84,9 @@ const IntelliEvents = () => {
       body: JSON.stringify(data)
     })
     const prediction = await response.json()
+    // modify the prediction to show the result
+
+
     setGetPrediction(prediction)
     console.log(prediction)
   })
@@ -129,10 +142,40 @@ const IntelliEvents = () => {
           className='px-3 py-2 mt-5 ml-[400px] rounded-md bg-slate-900 text-white'>Submit</button>
       </form>
 
-      <div className='w-full my-6 rounded-xl border border-gray-300 shadow-md p-3'>
-        <p></p>
+      {getPrediction && (
+        <div className='w-full my-6 rounded-xl border border-gray-300 shadow-md p-3 px-10'>
+          <div>
+            <p className='text-orange-700 my-2 font-semibold'>The predicted price for the event is:</p>
 
-      </div>
+            <div className='grid text-sm grid-cols-2 gap-x-5 gap-y-5'>
+              <div className='flex justify-between items-center'>
+                <p>Decorations Expenses</p>
+                <p className='font-bold'>INR {getPrediction.decorations.toPrecision(5)}</p>
+              </div>
+              <div className='flex justify-between items-center'>
+                <p>Venue Expenses</p>
+                <p className='font-bold'>INR {getPrediction.venue.toPrecision(5)}</p>
+              </div>
+              <div className='flex justify-between items-center'>
+                <p>Entertainment Expenses</p>
+                <p className='font-bold'>INR {getPrediction.entertainment.toPrecision(5)}</p>
+              </div>
+              <div className='flex justify-between items-center'>
+                <p>Catering Expenses</p>
+                <p className='font-bold'>INR {getPrediction.food.toPrecision(5)}</p>
+              </div>
+              <div className='flex justify-between items-center'>
+                <p>Staff Expenses</p>
+                <p className='font-bold'>INR {getPrediction.staffing.toPrecision(5)}</p>
+              </div>
+              <div className='flex justify-between items-center'>
+                <p>Transportation Expenses</p>
+                <p className='font-bold'>INR {getPrediction.transportation.toPrecision(5)}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
