@@ -1,5 +1,6 @@
 # storm_Nextwave
 
+## Deployed link: https://storm-nextwave.vercel.app/
 
 ## Introduction
 📅 Eventsy - An Event Planning and Scheduling System 🎉 is a software to simplify event organization. It allows users to create events, manage guests, vendors, budgets, and schedules. Key features include user registration, vendor management, task tracking, and mobile accessibility. The project aims to streamline event planning, making it efficient and user-friendly. 🚀📊
